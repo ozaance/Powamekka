@@ -37,11 +37,13 @@ export default function SphereCanvas() {
       const colorMap = loader.load('/textures/earth_color.jpg')
       const cloudsMap = loader.load('/textures/earth_clouds.png')
       const normalMap = loader.load('/textures/earth_normal.jpg')
+      const specularMap = loader.load('/textures/earth_specular.jpg')
 
       const earthMat = new THREE.MeshStandardMaterial({
         map: colorMap, normalMap,
         normalScale: new THREE.Vector2(0.8, 0.8),
-        roughness: 0.55, metalness: 0.05,
+        roughnessMap: specularMap,
+        roughness: 0.7, metalness: 0.1,
       })
       earthMesh = new THREE.Mesh(new THREE.SphereGeometry(1, 48, 48), earthMat)
       earthMesh.rotation.y = -0.6
