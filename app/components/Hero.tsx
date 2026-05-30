@@ -178,18 +178,6 @@ export default function Hero() {
         </div>
       </div>
 
-      <style>{`
-        @keyframes hFadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes hSlideUp { from { opacity: 0; transform: translateY(108%); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes hScaleX { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-        @keyframes sP {
-          0%   { transform: translateY(-100%); opacity: 0; }
-          12%  { opacity: 1; }
-          65%  { transform: translateY(140px); opacity: 1; }
-          88%  { transform: translateY(140px); opacity: 0; }
-          100% { transform: translateY(-100%); opacity: 0; }
-        }
-      `}</style>
     </section>
   )
 }
