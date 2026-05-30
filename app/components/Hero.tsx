@@ -107,7 +107,7 @@ export default function Hero() {
           }} />
 
           <div style={{ overflow: 'hidden' }}>
-            <h1 className="font-display font-light" style={{
+            <h1 className="h-line1 font-display font-light" style={{
               fontSize: 'clamp(4rem, 12.5vw, 16rem)',
               letterSpacing: '-0.05em', lineHeight: 0.83,
               color: 'rgba(255,255,255,0.87)', display: 'block',
