@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import Image from 'next/image'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -125,15 +126,15 @@ export default function Immersive() {
             backgroundColor: '#080810',
           }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             ref={imageRef}
             src="/images/immersive.jpg"
             alt="Réalisation Studio"
-            className="absolute inset-0 w-full object-cover"
+            fill
+            sizes="100vw"
+            className="absolute inset-0 object-cover"
             style={{ height: '130%', top: '-15%', opacity: 0.45, transformOrigin: 'center center' }}
             loading="lazy"
-            decoding="async"
           />
 
           {/* Fallback gradient */}

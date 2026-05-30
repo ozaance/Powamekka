@@ -3,9 +3,9 @@ import Hero from "./components/Hero";
 
 const Manifeste = dynamic(() => import("./components/Manifeste"));
 const Stats = dynamic(() => import("./components/Stats"));
-const Immersive = dynamic(() => import("./components/Immersive"), { ssr: false });
+const Immersive = dynamic(() => import("./components/Immersive"));
 const Services = dynamic(() => import("./components/Services"));
-const Transition = dynamic(() => import("./components/Transition"), { ssr: false });
+const Transition = dynamic(() => import("./components/Transition"));
 const Footer = dynamic(() => import("./components/Footer"));
 
 export default function Home() {
