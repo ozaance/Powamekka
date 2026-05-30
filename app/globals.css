@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+:root {
+  --background: #050508;
+  --foreground: #f0f0ee;
+  --gold: rgba(255, 218, 150, 1);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-cormorant);
+}
+
+/* ── Reset ── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Base ── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Cursor custom ── */
+/* Un curseur dot sophistiqué, au lieu du curseur système générique */
+*, *::before, *::after {
+  cursor: none !important;
+}
+
+#cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 218, 150, 0.7);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+  will-change: transform;
+}
+
+#cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 218, 150, 0.2);
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease, opacity 0.4s ease, border-color 0.3s ease;
+  will-change: transform;
+}
+
+/* Hover state sur éléments cliquables */
+a:hover ~ #cursor,
+button:hover ~ #cursor {
+  width: 10px;
+  height: 10px;
+}
+
+/* ── Scroll palette ── */
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050508;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 218, 150, 0.2);
+  border-radius: 1px;
+}
+
+/* ── Sélection texte ── */
+::selection {
+  background: rgba(255, 218, 150, 0.15);
+  color: rgba(255, 248, 235, 0.9);
+}
+
+/* ── Text rendering ── */
+.font-display {
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+}
+
+/* ── Utilitaires opacité hors Tailwind ── */
+.text-white\/18 { color: rgba(255 255 255 / 0.18); }
+.text-white\/15 { color: rgba(255 255 255 / 0.15); }
