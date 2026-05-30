@@ -9,6 +9,7 @@ export default function SphereCanvas() {
     let animId: number
     let isActive = true
     let renderer: any, scene: any, earthGroup: any, earthMesh: any, cloudsMesh: any
+    let initialized = false
 
     const init = async () => {
       const canvas = canvasRef.current
@@ -125,8 +126,30 @@ export default function SphereCanvas() {
       }
     }
 
-    const cleanup = init()
-    return () => { cleanup.then(fn => fn?.()); cancelAnimationFrame(animId) }
+    let cleanup: Promise<(() => void) | undefined>
+
+    const initOnInteraction = () => {
+      if (initialized) return
+      initialized = true
+      cleanup = init()
+      window.removeEventListener('mousemove', initOnInteraction)
+      window.removeEventListener('scroll', initOnInteraction)
+      window.removeEventListener('touchstart', initOnInteraction)
+    }
+
+    const timer = setTimeout(initOnInteraction, 2000)
+    window.addEventListener('mousemove', initOnInteraction, { passive: true, once: true })
+    window.addEventListener('scroll', initOnInteraction, { passive: true, once: true })
+    window.addEventListener('touchstart', initOnInteraction, { passive: true, once: true })
+
+    return () => {
+      clearTimeout(timer)
+      window.removeEventListener('mousemove', initOnInteraction)
+      window.removeEventListener('scroll', initOnInteraction)
+      window.removeEventListener('touchstart', initOnInteraction)
+      cleanup?.then(fn => fn?.())
+      cancelAnimationFrame(animId)
+    }
   }, [])
 
   return (
